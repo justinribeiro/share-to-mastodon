@@ -34,7 +34,7 @@ import '@justinribeiro/share-to-mastodon';
 If you want the paste-and-go version, you can simply load it via CDN:
 
 ```html
-<script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/share-to-mastodon@0.1.1/dist/share-to-mastodon.js">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/share-to-mastodon@0.2.0/dist/share-to-mastodon.js">
 ```
 
 ## A Basic Example
