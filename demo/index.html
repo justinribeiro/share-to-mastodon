@@ -6,29 +6,75 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
-
+    <script type="module" src="../share-to-mastodon.js"></script>
     <style>
+      * {
+        box-sizing: content-box;
+      }
       body {
-        background: #fafafa;
+        max-width: 800px;
+        margin: auto;
+      }
+      pre {
+        width: 100%;
+        padding: 1em;
+        overflow-x: scroll;
+        background-clip: z;
+        background-color: #eee;
+      }
+
+      .myMagicalCss {
+        --wc-stm-link-text-decoration: none;
+        --wc-stm-link-color-initial: #0049a3;
+        --wc-stm-link-color-visited: #0049a3;
+      }
+      .myMagicalCss > div {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.5rem;
+        background: lightblue;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+      .myMagicalCss > div:hover {
+        background: #eee;
+      }
+      .myMagicalCss svg {
+        width: 24px;
+        margin-right: 0.5rem;
       }
     </style>
   </head>
   <body>
-    <div id="demo"></div>
+    <h3>Basic Usage</h3>
+    <share-to-mastodon>
+      Share to Mastodon
+    </share-to-mastodon>
+    <h4>Code</h4>
+    <pre>
+&lt;share-to-mastodon&gt;&#10;  Share to Mastodon&#10;&lt;/share-to-mastodon&gt;
+    </pre>
 
-    <script type="module">
-      import { html, render } from 'lit-html';
-      import '../share-to-mastodon.js';
-
-      const title = 'words words words';
-      render(
-        html`
-          <share-to-mastodon>
-            Share to Mastodon
-          </share-to-mastodon>
-        `,
-        document.querySelector('#demo')
-      );
-    </script>
+    <h3>Design Your Own Button</h3>
+    <share-to-mastodon class="myMagicalCss">
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 216.4 232">
+          <path
+            fill="#2b90d9"
+            d="M212 139c-3 16-29 34-58 38-15 2-30 3-46 3-26-2-46-7-46-7v8c4 25 26 27 47 28 21 0 39-6 39-6l1 19s-14 8-41 10c-14 1-32-1-53-6C9 214 1 165 0 116V76c0-50 33-65 33-65C50 3 78 0 108 0h1c29 0 58 3 74 11 0 0 33 15 33 65 0 0 1 37-4 63"
+          />
+          <path
+            fill="#fff"
+            d="M178 80v61h-25V82c0-13-5-19-15-19-12 0-18 8-18 22v33H96V85c0-14-6-22-17-22s-16 6-16 19v59H39V80c0-12 3-22 9-30 7-7 16-11 26-11 13 0 22 5 28 15l6 10 6-10c6-10 16-15 28-15 11 0 19 4 26 11 6 8 10 18 10 30"
+          />
+        </svg>
+        <div>Share This Site</div>
+      </div>
+    </share-to-mastodon>
+    <h4>Code</h4>
+    <pre>
+&lt;style&gt;&#10;.myMagicalCss {&#10;  --wc-stm-link-text-decoration: none;&#10;  --wc-stm-link-color-initial: #0049a3;&#10;  --wc-stm-link-color-visited: #0049a3;&#10;}&#10;.myMagicalCss &gt; div {&#10;  display: inline-flex;&#10;  justify-content: center;&#10;  align-items: center;&#10;  padding: 0.5rem;&#10;  background: lightblue;&#10;  border-radius: 5px;&#10;  border: 1px solid #ccc;&#10;}&#10;.myMagicalCss &gt; div:hover {&#10;  background: #eee;&#10;}&#10;.myMagicalCss svg {&#10;  width: 24px;&#10;  margin-right: 0.5rem;&#10;}&#10;&lt;/style&gt;&#10;&lt;share-to-mastodon class=&quot;myMagicalCss&quot;&gt;&#10;  &lt;div&gt;&#10;    &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 216.4 232&quot;&gt;&#10;      &lt;path&#10;        fill=&quot;#2b90d9&quot;&#10;        d=&quot;M212 139c-3 16-29 34-58 38-15 2-30 3-46 3-26-2-46-7-46-7v8c4 25 26 27 47 28 21 0 39-6 39-6l1 19s-14 8-41 10c-14 1-32-1-53-6C9 214 1 165 0 116V76c0-50 33-65 33-65C50 3 78 0 108 0h1c29 0 58 3 74 11 0 0 33 15 33 65 0 0 1 37-4 63&quot;&#10;      /&gt;&#10;      &lt;path&#10;        fill=&quot;#fff&quot;&#10;        d=&quot;M178 80v61h-25V82c0-13-5-19-15-19-12 0-18 8-18 22v33H96V85c0-14-6-22-17-22s-16 6-16 19v59H39V80c0-12 3-22 9-30 7-7 16-11 26-11 13 0 22 5 28 15l6 10 6-10c6-10 16-15 28-15 11 0 19 4 26 11 6 8 10 18 10 30&quot;&#10;      /&gt;&#10;    &lt;/svg&gt;&#10;    &lt;div&gt;Share This Site&lt;/div&gt;&#10;  &lt;/div&gt;&#10;&lt;/share-to-mastodon&gt;
+    </pre>
   </body>
 </html>

@@ -19,16 +19,13 @@
     "lint": "npm run lint:eslint && npm run lint:prettier",
     "format": "npm run format:eslint && npm run format:prettier",
     "test": "karma start --coverage",
-    "test:watch": "karma start --auto-watch=true --single-run=false",
-    "storybook": "start-storybook",
-    "storybook:build": "build-storybook"
+    "test:watch": "karma start --auto-watch=true --single-run=false"
   },
   "dependencies": {
     "lit-element": "^2.2.1",
     "lit-html": "^1.1.2"
   },
   "devDependencies": {
-    "@open-wc/demoing-storybook": "^2.0.0",
     "@open-wc/eslint-config": "^2.0.0",
     "@open-wc/testing": "^2.0.0",
     "@open-wc/testing-karma": "^3.0.0",

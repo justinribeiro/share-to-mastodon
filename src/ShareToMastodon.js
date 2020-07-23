@@ -95,7 +95,7 @@ export class ShareToMastodon extends LitElement {
         display: block;
         background-color: var(
           --wc-stm-dialog-backdrop-color,
-          rgba(0, 0, 0, 0.3)
+          rgba(0, 0, 0, 0.5)
         );
         position: absolute;
         top: 0px;
@@ -199,7 +199,7 @@ export class ShareToMastodon extends LitElement {
     this.targetInstance = '';
     this.modalMessage = "Select or set which instance you'd like to share to.";
     this.modalShareButton = 'Share';
-    this.modalSaveAsDefault = 'Save As My Default For This Site';
+    this.modalSaveAsDefault = 'Remember My Instance (locally only)';
     this.customInstanceList = [
       { label: 'Mastodon.Social', link: 'https://mastodon.social/' },
       { label: 'Mastodon.Online', link: 'https://mastodon.online/' },
