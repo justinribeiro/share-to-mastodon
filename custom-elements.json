@@ -1,30 +1,203 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
       "name": "share-to-mastodon",
-      "description": "A component with a title and an action counter",
-      "properties": [
+      "path": "./share-to-mastodon.js",
+      "description": "share-to-mastodon - a small web component that uses a internal mini-modal to\nallow setting of a target Mastodon instance from the user to allow sharing.",
+      "attributes": [
         {
-          "name": "title",
-          "type": "String",
-          "description": "The title of your component",
-          "default": "Hey there"
+          "name": "message",
+          "description": "The message you'd like to share within the target Mastodon input that\nopens on the share page.",
+          "type": "string",
+          "default": "\"Check out the amazing content I just discovered!\""
         },
         {
-          "name": "counter",
-          "type": "Number",
-          "description": "An action counter",
-          "default": 0
+          "name": "url",
+          "description": "The url of the thing you are sharing within the target Mastodon input that\nopens on the share page.",
+          "type": "string",
+          "default": "\"href\""
+        },
+        {
+          "name": "targetInstance",
+          "description": "The target Mastodon instance, usually set by the user within the\nmini-modal that display on first share",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "modalMessage",
+          "description": "The string that is displayed above the input field on the mini-modal",
+          "type": "string",
+          "default": "\"Select or set which instance you'd like to share to.\""
+        },
+        {
+          "name": "modalShareButton",
+          "description": "The string that is display on as the action button to share on the\nmini-modal",
+          "type": "string",
+          "default": "\"Share\""
+        },
+        {
+          "name": "modalSaveAsDefault",
+          "description": "The string that is used as the label for the checkbox default save\noption",
+          "type": "string",
+          "default": "\"Remember My Instance (locally only)\""
+        },
+        {
+          "name": "customInstanceList",
+          "description": "An array of Mastodon instances you would like auto-populated within the\nurl datalist",
+          "type": "array",
+          "default": "[{\"label\":\"Mastodon.Social\",\"link\":\"https://mastodon.social/\"},{\"label\":\"Mastodon.Online\",\"link\":\"https://mastodon.online/\"},{\"label\":\"fosstodon.org\",\"link\":\"https://fosstodon.org/\"},{\"label\":\"photog.social\",\"link\":\"https://photog.social/\"}]"
         }
       ],
-      "events": [],
-      "slots": [],
+      "properties": [
+        {
+          "name": "message",
+          "attribute": "message",
+          "description": "The message you'd like to share within the target Mastodon input that\nopens on the share page.",
+          "type": "string",
+          "default": "\"Check out the amazing content I just discovered!\""
+        },
+        {
+          "name": "url",
+          "attribute": "url",
+          "description": "The url of the thing you are sharing within the target Mastodon input that\nopens on the share page.",
+          "type": "string",
+          "default": "\"href\""
+        },
+        {
+          "name": "targetInstance",
+          "attribute": "targetInstance",
+          "description": "The target Mastodon instance, usually set by the user within the\nmini-modal that display on first share",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "modalMessage",
+          "attribute": "modalMessage",
+          "description": "The string that is displayed above the input field on the mini-modal",
+          "type": "string",
+          "default": "\"Select or set which instance you'd like to share to.\""
+        },
+        {
+          "name": "modalShareButton",
+          "attribute": "modalShareButton",
+          "description": "The string that is display on as the action button to share on the\nmini-modal",
+          "type": "string",
+          "default": "\"Share\""
+        },
+        {
+          "name": "modalSaveAsDefault",
+          "attribute": "modalSaveAsDefault",
+          "description": "The string that is used as the label for the checkbox default save\noption",
+          "type": "string",
+          "default": "\"Remember My Instance (locally only)\""
+        },
+        {
+          "name": "customInstanceList",
+          "attribute": "customInstanceList",
+          "description": "An array of Mastodon instances you would like auto-populated within the\nurl datalist",
+          "type": "array",
+          "default": "[{\"label\":\"Mastodon.Social\",\"link\":\"https://mastodon.social/\"},{\"label\":\"Mastodon.Online\",\"link\":\"https://mastodon.online/\"},{\"label\":\"fosstodon.org\",\"link\":\"https://fosstodon.org/\"},{\"label\":\"photog.social\",\"link\":\"https://photog.social/\"}]"
+        }
+      ],
+      "slots": [
+        {
+          "name": "default",
+          "description": "The text or what ever you want the link to be"
+        }
+      ],
       "cssProperties": [
         {
-          "name": "--share-to-mastodon-text-color",
-          "description": "Main Text Color",
-          "type": "Color"
+          "name": "--wc-stm-color",
+          "description": "the host text color, default #000",
+          "default": "\"black\""
+        },
+        {
+          "name": "--wc-stm-font-family",
+          "description": "the host font family, default sans-serif",
+          "default": "\"sans-serif\""
+        },
+        {
+          "name": "--wc-stm-link-text-decoration",
+          "description": "the link text decoration if no slot structures overwrite",
+          "default": "\"underline\""
+        },
+        {
+          "name": "--wc-stm-link-color-initial",
+          "description": "the link text color if no slot structures overwrite",
+          "default": "\"blue\""
+        },
+        {
+          "name": "--wc-stm-link-color-active",
+          "description": "the link text color active",
+          "default": "\"red\""
+        },
+        {
+          "name": "--wc-stm-link-color-visited",
+          "description": "the link text color visited",
+          "default": "\"purple\""
+        },
+        {
+          "name": "--wc-stm-dialog-padding",
+          "description": "the mini-dialogs inner padding",
+          "default": "\"1rem\""
+        },
+        {
+          "name": "--wc-stm-dialog-background-color",
+          "description": "the mini-dialogs background color",
+          "default": "\"white\""
+        },
+        {
+          "name": "--wc-stm-dialog-border-radius",
+          "description": "this mini-dialogs border radius",
+          "default": "\"0.5rem\""
+        },
+        {
+          "name": "--wc-stm-form-input-padding",
+          "default": "\"0.5rem\""
+        },
+        {
+          "name": "--wc-stm-form-input-border-radius",
+          "default": "\"0.25rem\""
+        },
+        {
+          "name": "--wc-stm-form-input-border",
+          "default": "\"1px solid #ccc\""
+        },
+        {
+          "name": "--wc-stm-form-input-font-size",
+          "default": "\"1em\""
+        },
+        {
+          "name": "--wc-stm-form-button-border"
+        },
+        {
+          "name": "--wc-stm-form-button-border-radius",
+          "default": "\"0.25rem\""
+        },
+        {
+          "name": "--wc-stm-form-button-background-color",
+          "default": "\"#eee\""
+        },
+        {
+          "name": "--wc-stm-form-button-padding",
+          "default": "\"0.5rem 0\""
+        },
+        {
+          "name": "--wc-stm-form-button-font-size",
+          "default": "\"1em\""
+        },
+        {
+          "name": "--wc-stm-form-button-color",
+          "default": "\"inherit\""
+        },
+        {
+          "name": "--wc-stm-form-button-background-color-hover",
+          "default": "\"#ccc\""
+        },
+        {
+          "name": "--wc-stm-form-button-color-hover",
+          "default": "\"inherit\""
         }
       ]
     }
