@@ -10,6 +10,12 @@
   "license": "MIT",
   "main": "share-to-mastodon.js",
   "module": "share-to-mastodon.js",
+  "files": [
+    "dist/**/*",
+    "src/**/*",
+    "share-to-mastodon.js",
+    "index.*"
+  ],
   "scripts": {
     "start": "es-dev-server --app-index demo/index.html --node-resolve --open --watch",
     "lint:eslint": "eslint --ext .js,.html . --ignore-path .gitignore",
@@ -19,7 +25,8 @@
     "lint": "npm run lint:eslint && npm run lint:prettier",
     "format": "npm run format:eslint && npm run format:prettier",
     "test": "karma start --coverage",
-    "test:watch": "karma start --auto-watch=true --single-run=false"
+    "test:watch": "karma start --auto-watch=true --single-run=false",
+    "prepublishOnly": "yarn rollup -c"
   },
   "dependencies": {
     "lit-element": "^2.2.1",
@@ -35,7 +42,11 @@
     "eslint-config-prettier": "^6.11.0",
     "husky": "^1.0.0",
     "lint-staged": "^8.0.0",
-    "prettier": "^2.0.4"
+    "prettier": "^2.0.4",
+    "rollup": "^2.22.2",
+    "rollup-plugin-filesize": "^9.0.2",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^6.1.0"
   },
   "eslintConfig": {
     "extends": [

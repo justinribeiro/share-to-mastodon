@@ -10,6 +10,33 @@
 3. Does zero tracking of anything
 4. Lots of custom css props, every string can be overridden
 
+## Install
+
+This web component is built with ES modules in mind and is
+available on NPM:
+
+Install code-block:
+
+```sh
+npm i @justinribeiro/share-to-mastodon
+# or
+yarn add @justinribeiro/share-to-mastodon
+```
+
+After install, import into your project:
+
+```js
+import '@justinribeiro/share-to-mastodon';
+```
+
+## Install with CDN
+
+If you want the paste-and-go version, you can simply load it via CDN:
+
+```html
+<script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/share-to-mastodon@0.1.1/dist/share-to-mastodon.js">
+```
+
 ## A Basic Example
 
 By default, the component renders whatever you feed the `<slot>`, wrapped internally as a `<a>`:
