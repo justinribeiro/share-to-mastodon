@@ -1,5 +1,5 @@
 {
-  "name": "share-to-mastodon",
+  "name": "@justinribeiro/share-to-mastodon",
   "version": "0.1.0",
   "description": "A small web component that uses a internal mini-modal to allow setting of a target Mastodon instance from the user to allow sharing.",
   "author": "Justin Ribeiro <justin@justinribeiro.com>",
