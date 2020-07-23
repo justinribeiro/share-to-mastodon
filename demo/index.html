@@ -11,12 +11,6 @@
       body {
         background: #fafafa;
       }
-      share-to-mastodon > div:first-child {
-        display: flex;
-        justify-content: center;
-        padding: 2rem;
-        border: 1px solid green;
-      }
     </style>
   </head>
   <body>
@@ -29,7 +23,7 @@
       const title = 'words words words';
       render(
         html`
-          <share-to-mastodon .text=${title} target="https://justinribeiro.com">
+          <share-to-mastodon>
             Share to Mastodon
           </share-to-mastodon>
         `,
