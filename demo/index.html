@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+
+    <style>
+      body {
+        background: #fafafa;
+      }
+      share-to-mastodon > div:first-child {
+        display: flex;
+        justify-content: center;
+        padding: 2rem;
+        border: 1px solid green;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="demo"></div>
+
+    <script type="module">
+      import { html, render } from 'lit-html';
+      import '../share-to-mastodon.js';
+
+      const title = 'words words words';
+      render(
+        html`
+          <share-to-mastodon .text=${title} target="https://justinribeiro.com">
+            Share to Mastodon
+          </share-to-mastodon>
+        `,
+        document.querySelector('#demo')
+      );
+    </script>
+  </body>
+</html>

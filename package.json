@@ -1,0 +1,65 @@
+{
+  "name": "share-to-mastodon",
+  "version": "0.1.0",
+  "description": "A small web component that uses a internal mini-modal to allow setting of a target Mastodon instance from the user to allow sharing.",
+  "author": "Justin Ribeiro <justin@justinribeiro.com>",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:justinribeiro/share-to-mastodon.git"
+  },
+  "license": "MIT",
+  "main": "share-to-mastodon.js",
+  "module": "share-to-mastodon.js",
+  "scripts": {
+    "start": "es-dev-server --app-index demo/index.html --node-resolve --open --watch",
+    "lint:eslint": "eslint --ext .js,.html . --ignore-path .gitignore",
+    "format:eslint": "eslint --ext .js,.html . --fix --ignore-path .gitignore",
+    "lint:prettier": "prettier \"**/*.js\" --check --ignore-path .gitignore",
+    "format:prettier": "prettier \"**/*.js\" --write --ignore-path .gitignore",
+    "lint": "npm run lint:eslint && npm run lint:prettier",
+    "format": "npm run format:eslint && npm run format:prettier",
+    "test": "karma start --coverage",
+    "test:watch": "karma start --auto-watch=true --single-run=false",
+    "storybook": "start-storybook",
+    "storybook:build": "build-storybook"
+  },
+  "dependencies": {
+    "lit-html": "^1.1.2",
+    "lit-element": "^2.2.1"
+  },
+  "devDependencies": {
+    "es-dev-server": "^1.23.0",
+    "eslint": "^6.1.0",
+    "@open-wc/eslint-config": "^2.0.0",
+    "prettier": "^2.0.4",
+    "eslint-config-prettier": "^6.11.0",
+    "husky": "^1.0.0",
+    "lint-staged": "^8.0.0",
+    "@open-wc/testing-karma": "^3.0.0",
+    "deepmerge": "^3.2.0",
+    "@open-wc/testing": "^2.0.0",
+    "@open-wc/demoing-storybook": "^2.0.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@open-wc/eslint-config",
+      "eslint-config-prettier"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "arrowParens": "avoid"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
+  }
+}
