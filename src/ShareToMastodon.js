@@ -1,3 +1,4 @@
+/* eslint-disable lit/no-invalid-html */
 import { html, css, LitElement } from 'lit-element';
 
 /**
@@ -35,7 +36,6 @@ export class ShareToMastodon extends LitElement {
     return css`
       :host {
         will-change: transform, opacity;
-        display: inline-block;
         color: var(--wc-stm-color, #000);
         font-family: var(--wc-stm-font-family, sans-serif);
       }
@@ -294,8 +294,9 @@ export class ShareToMastodon extends LitElement {
       <a
         href="${this.targetInstance}/share?text=${this.message}%20${this.url}"
         @click=${this.__hasInstanceSet}
-        ><slot></slot
-      ></a>
+      >
+        <slot></slot>
+      </a>
     `;
   }
 }
