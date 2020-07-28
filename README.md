@@ -1,4 +1,4 @@
-[![npm version](https://badge.fury.io/js/%40justinribeiro%2Fshare-to-mastodon.svg)](https://badge.fury.io/js/%40justinribeiro%2Fshare-to-mastodon)
+[![npm version](https://badge.fury.io/js/%40justinribeiro%2Fshare-to-mastodon.svg)](https://badge.fury.io/js/%40justinribeiro%2Fshare-to-mastodon) [![min+gzip](https://badgen.net/bundlephobia/minzip/@justinribeiro/share-to-mastodon)](https://bundlephobia.com/result?p=@justinribeiro/share-to-mastodon@0.2.0)
 
 # \<share-to-mastodon>
 > a small web component that uses a internal mini-modal to allow setting of a target Mastodon instance from the user to allow sharing.
