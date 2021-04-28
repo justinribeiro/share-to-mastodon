@@ -1,5 +1,5 @@
 /* eslint-disable lit/no-invalid-html */
-import { html, css, LitElement } from 'lit-element';
+import { html, css, LitElement } from 'lit';
 
 /**
  * share-to-mastodon - a small web component that uses a internal mini-modal to
