@@ -25,9 +25,10 @@
     "format:prettier": "prettier \"**/*.js\" --write --ignore-path .gitignore",
     "lint": "npm run lint:eslint && npm run lint:prettier",
     "format": "npm run format:eslint && npm run format:prettier",
-    "test": "karma start --coverage",
-    "test:watch": "karma start --auto-watch=true --single-run=false",
-    "prepublishOnly": "yarn rollup -c"
+    "test": "wtr --coverage",
+    "test:watch": "wtr --coverage --watch",
+    "prepublishOnly": "yarn rollup -c && yarn make-test-badges",
+    "make-test-badges": "yarn istanbul-badges-readme"
   },
   "dependencies": {
     "lit": "^2.5.0"
@@ -37,17 +38,20 @@
     "@open-wc/testing": "^2.0.0",
     "@open-wc/testing-karma": "^3.0.0",
     "@web/dev-server": "^0.1.35",
+    "@web/test-runner": "^0.15.0",
     "deepmerge": "^3.2.0",
     "es-dev-server": "^1.23.0",
     "eslint": "^6.1.0",
     "eslint-config-prettier": "^6.11.0",
     "husky": "^1.0.0",
+    "istanbul-badges-readme": "^1.4.0",
     "lint-staged": "^8.0.0",
     "prettier": "^2.0.4",
     "rollup": "^2.22.2",
     "rollup-plugin-filesize": "^9.0.2",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-terser": "^6.1.0"
+    "rollup-plugin-terser": "^6.1.0",
+    "sinon": "^15.0.1"
   },
   "eslintConfig": {
     "extends": [

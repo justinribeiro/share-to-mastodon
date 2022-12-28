@@ -219,7 +219,7 @@ export class ShareToMastodon extends LitElement {
       `${instance}/share?text=${this.message}%20${this.url}`,
       'wcShareToMastodon'
     );
-    this.removeAttribute('open');
+    this.__close();
 
     if (this.shadowRoot.querySelector('#save').checked) {
       this.targetInstance = instance;
@@ -238,6 +238,13 @@ export class ShareToMastodon extends LitElement {
    */
   __hasInstanceSet(event) {
     event.preventDefault();
+
+    const checkLocalStorage = localStorage.getItem('wc-share-to-mastodon');
+
+    if (checkLocalStorage) {
+      this.shadowRoot.querySelector('input').value = checkLocalStorage;
+    }
+
     this.shadowRoot.querySelector('dialog').showModal();
   }
 
@@ -252,7 +259,6 @@ export class ShareToMastodon extends LitElement {
           <h2 id="title">${this.modalTitle}</h2>
           <label for="url">${this.modalMessage}</label>
           <input
-            aria-labelledby="message"
             type="url"
             name="url"
             id="url"
@@ -276,7 +282,7 @@ export class ShareToMastodon extends LitElement {
           </div>
           <div id="actions">
             <button id="submitButton">${this.modalShareButton}</button>
-            <button id="cancelButton" @click="${this.__close}">
+            <button type="button" id="cancelButton" @click="${this.__close}">
               ${this.modalShareCancel}
             </button>
           </div>
