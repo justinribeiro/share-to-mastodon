@@ -18,7 +18,7 @@
     "index.*"
   ],
   "scripts": {
-    "start": "es-dev-server --app-index demo/index.html --node-resolve --open --watch",
+    "start": "wds --app-index demo/index.html --node-resolve --open --watch",
     "lint:eslint": "eslint --ext .js,.html . --ignore-path .gitignore",
     "format:eslint": "eslint --ext .js,.html . --fix --ignore-path .gitignore",
     "lint:prettier": "prettier \"**/*.js\" --check --ignore-path .gitignore",
@@ -30,12 +30,13 @@
     "prepublishOnly": "yarn rollup -c"
   },
   "dependencies": {
-    "lit": "^2.0.0-rc.1"
+    "lit": "^2.5.0"
   },
   "devDependencies": {
     "@open-wc/eslint-config": "^2.0.0",
     "@open-wc/testing": "^2.0.0",
     "@open-wc/testing-karma": "^3.0.0",
+    "@web/dev-server": "^0.1.35",
     "deepmerge": "^3.2.0",
     "es-dev-server": "^1.23.0",
     "eslint": "^6.1.0",

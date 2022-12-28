@@ -14,8 +14,10 @@ import { html, css, LitElement } from 'lit';
  * @cssprop [--wc-stm-link-color-active=red] - the link text color active
  * @cssprop [--wc-stm-link-color-visited=purple] - the link text color visited
  * @cssprop [--wc-stm-dialog-padding=1rem] - the mini-dialogs inner padding
- * @cssprop [--wc-stm-dialog-background-color=white] - the mini-dialogs background color
- * @cssprop [--wc-stm-dialog-border-radius=0.5rem] - this mini-dialogs border radius
+ * @cssprop [--wc-stm-dialog-background-color=white] - the dialogs background color
+ * @cssprop [--wc-stm-dialog-border-color=transparent] - the dialogs border color
+ * @cssprop [--wc-stm-dialog-border-radius=0.5rem] - this dialogs border radius
+ * @cssprop [--wc-stm-title-margin-top-bottom=0.5rem] - the mini-dialogs title margin for the H2
  * @cssprop [--wc-stm-form-input-padding=0.5rem]
  * @cssprop [--wc-stm-form-input-border-radius=0.25rem]
  * @cssprop [--wc-stm-form-input-border=1px solid #ccc]
@@ -26,8 +28,10 @@ import { html, css, LitElement } from 'lit';
  * @cssprop [--wc-stm-form-button-padding=0.5rem 0]
  * @cssprop [--wc-stm-form-button-font-size=1em]
  * @cssprop [--wc-stm-form-button-color=inherit]
- * @cssprop [--wc-stm-form-button-background-color-hover=#ccc]
- * @cssprop [--wc-stm-form-button-color-hover=inherit]
+ * @cssprop [--wc-stm-form-submit-background-color-hover=#ccc]
+ * @cssprop [--wc-stm-form-cancel-background-color-hover=#eee]
+ * @cssprop [--wc-stm-form-submit-color-hover=inherit]
+ * @cssprop [--wc-stm-form-cancel-color-hover=inherit]
  *
  * @extends {LitElement}
  */
@@ -51,58 +55,8 @@ export class ShareToMastodon extends LitElement {
         color: var(--wc-stm-link-color-visited, purple);
       }
 
-      #dialog,
-      #backdrop {
-        display: none;
-      }
-
-      :host([open]) {
-        z-index: 10000;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      :host([open]) > a {
-        display: none;
-      }
-
-      :host([open]) > #dialog {
-        padding: 0;
-        margin: 0;
-        outline: none;
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        border: none;
-        overflow-y: auto;
-        overscroll-behavior: contain;
-        position: relative;
-        z-index: 1;
-        padding: var(--wc-stm-dialog-padding, 1rem);
-        background-color: var(--wc-stm-dialog-background-color, #fff);
-        border-radius: var(--wc-stm-dialog-border-radius, 0.5rem);
-        overflow: hidden;
-        max-width: 80vw;
-      }
-
-      :host([open]) > #backdrop {
-        display: block;
-        background-color: var(
-          --wc-stm-dialog-backdrop-color,
-          rgba(0, 0, 0, 0.5)
-        );
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        width: 100%;
-        height: 100%;
-        outline: none;
+      #title {
+        margin: var(--wc-stm-title-margin-top-bottom, 0.5rem) 0;
       }
 
       #url {
@@ -111,8 +65,15 @@ export class ShareToMastodon extends LitElement {
         border: var(--wc-stm-form-input-border, 1px solid #ccc);
         font-size: var(--wc-stm-form-input-font-size, 1em);
       }
+
       #save {
         padding: var(--wc-stm-form-input-padding, 0.5rem);
+      }
+
+      dialog {
+        background-color: var(--wc-stm-dialog-background-color, #fff);
+        border-radius: var(--wc-stm-dialog-border-radius, 0.5rem);
+        border-color: var(--wc-stm-dialog-border-color, transparent);
       }
 
       form {
@@ -126,15 +87,21 @@ export class ShareToMastodon extends LitElement {
         padding: var(--wc-stm-form-input-padding, 1rem 0);
       }
 
-      form > button {
+      #actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      #actions > button {
         border: var(--wc-stm-form-button-border);
         border-radius: var(--wc-stm-form-button-border-radius, 0.25rem);
-        background-color: var(--wc-stm-form-button-background-color, #eee);
         padding: var(--wc-stm-form-button-padding, 0.5rem 0);
         font-size: var(--wc-stm-form-button-font-size, 1em);
-        color: var(--wc-stm-form-button-color, inherit);
+        width: calc(50% - 0.5rem);
       }
-      form > button:hover {
+
+      #actions > button:hover {
         border: var(--wc-stm-form-button-border);
         border-radius: var(--wc-stm-form-button-border-radius, 0.25rem);
         background-color: var(
@@ -143,11 +110,26 @@ export class ShareToMastodon extends LitElement {
         );
         color: var(--wc-stm-form-button-color-hover, inherit);
       }
+
+      #submitButton {
+        background-color: var(--wc-stm-form-submit-background-color, #8686fd);
+        color: var(--wc-stm-submit-button-color, inherit);
+      }
+
+      #cancelButton {
+        background-color: var(--wc-stm-form-cancel-background-color, #eeeeee);
+        color: var(--wc-stm-cancel-button-color, inherit);
+      }
     `;
   }
 
   static get properties() {
     return {
+      /**
+       * The dialog modal title. Also used for screen readers.
+       * @attr
+       */
+      modalTitle: { type: String },
       /**
        * The message you'd like to share within the target Mastodon input that
        * opens on the share page.
@@ -172,8 +154,7 @@ export class ShareToMastodon extends LitElement {
        */
       modalMessage: { type: String },
       /**
-       * The string that is display on as the action button to share on the
-       * mini-modal
+       * The string that is displayed on the action button to share.
        * @attr
        */
       modalShareButton: { type: String },
@@ -182,6 +163,10 @@ export class ShareToMastodon extends LitElement {
        * option
        */
       modalSaveAsDefault: { type: String },
+      /**
+       * The string that is displayed on the action button to cancel the dialog.
+       */
+      modalShareCancel: { type: String },
       /**
        * An array of Mastodon instances you would like auto-populated within the
        * url datalist
@@ -197,8 +182,10 @@ export class ShareToMastodon extends LitElement {
     this.message = 'Check out the amazing content I just discovered!';
     this.url = window.location.href;
     this.targetInstance = '';
+    this.modalTitle = 'Share to Mastodon';
     this.modalMessage = "Select or set which instance you'd like to share to.";
     this.modalShareButton = 'Share';
+    this.modalShareCancel = 'Cancel';
     this.modalSaveAsDefault = 'Remember My Instance (locally only)';
     this.customInstanceList = [
       { label: 'Mastodon.Social', link: 'https://mastodon.social/' },
@@ -251,23 +238,21 @@ export class ShareToMastodon extends LitElement {
    */
   __hasInstanceSet(event) {
     event.preventDefault();
-    this.setAttribute('open', '');
+    this.shadowRoot.querySelector('dialog').showModal();
   }
 
-  /**
-   * Close the modal share helper
-   */
-  cancel() {
-    this.removeAttribute('open');
+  __close() {
+    this.shadowRoot.querySelector('dialog').close();
   }
 
   render() {
     return html`
-      <div id="backdrop" @click="${this.cancel}"></div>
-      <div id="dialog">
+      <dialog aria-labelledby="title">
         <form>
-          <p>${this.modalMessage}</p>
+          <h2 id="title">${this.modalTitle}</h2>
+          <label for="url">${this.modalMessage}</label>
           <input
+            aria-labelledby="message"
             type="url"
             name="url"
             id="url"
@@ -276,6 +261,7 @@ export class ShareToMastodon extends LitElement {
             size="30"
             required
             list="defaultInstances"
+            autofocus
           />
           <datalist id="defaultInstances">
             ${this.customInstanceList.map(
@@ -288,9 +274,14 @@ export class ShareToMastodon extends LitElement {
             <input type="checkbox" id="save" name="save" />
             <label for="save">${this.modalSaveAsDefault}</label>
           </div>
-          <button>${this.modalShareButton}</button>
+          <div id="actions">
+            <button id="submitButton">${this.modalShareButton}</button>
+            <button id="cancelButton" @click="${this.__close}">
+              ${this.modalShareCancel}
+            </button>
+          </div>
         </form>
-      </div>
+      </dialog>
       <a
         href="${this.targetInstance}/share?text=${this.message}%20${this.url}"
         @click=${this.__hasInstanceSet}
