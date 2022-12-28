@@ -11,11 +11,9 @@
   "main": "share-to-mastodon.js",
   "module": "share-to-mastodon.js",
   "files": [
-    "dist/**/*",
-    "src/**/*",
     "share-to-mastodon.js",
-    "custom-elements.json",
-    "index.*"
+    "share-to-mastodon.min.js",
+    "share-to-mastodon.min.js.map"
   ],
   "scripts": {
     "start": "wds --app-index demo/index.html --node-resolve --open --watch",
@@ -27,7 +25,7 @@
     "format": "npm run format:eslint && npm run format:prettier",
     "test": "wtr --coverage",
     "test:watch": "wtr --coverage --watch",
-    "prepublishOnly": "yarn rollup -c && yarn make-test-badges",
+    "build": "rm -rf ./dist && yarn rollup -c && cp ./share-to-mastodon.js ./dist && yarn make-test-badges && cp ./package.json ./dist && cp ./README.md ./dist",
     "make-test-badges": "yarn istanbul-badges-readme"
   },
   "dependencies": {
@@ -37,7 +35,10 @@
     "@open-wc/eslint-config": "^2.0.0",
     "@open-wc/testing": "^2.0.0",
     "@open-wc/testing-karma": "^3.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.1",
     "@web/dev-server": "^0.1.35",
+    "@web/rollup-plugin-copy": "^0.3.0",
+    "@web/rollup-plugin-html": "^1.11.0",
     "@web/test-runner": "^0.15.0",
     "deepmerge": "^3.2.0",
     "es-dev-server": "^1.23.0",
@@ -47,10 +48,12 @@
     "istanbul-badges-readme": "^1.4.0",
     "lint-staged": "^8.0.0",
     "prettier": "^2.0.4",
-    "rollup": "^2.22.2",
+    "rollup": "^3.9.0",
     "rollup-plugin-filesize": "^9.0.2",
+    "rollup-plugin-minify-html-literals": "^1.2.6",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-terser": "^6.1.0",
+    "rollup-plugin-summary": "^2.0.0",
+    "rollup-plugin-terser": "^7.0.2",
     "sinon": "^15.0.1"
   },
   "eslintConfig": {
