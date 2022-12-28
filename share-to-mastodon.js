@@ -1,3 +1,4 @@
+/* eslint-disable lit/no-invalid-html */
 import { html, css, LitElement } from 'lit';
 
 /**

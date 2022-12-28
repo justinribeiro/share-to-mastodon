@@ -3823,6 +3823,15 @@ eslint-plugin-lit@^1.2.0:
     parse5-htmlparser2-tree-adapter "^6.0.1"
     requireindex "^1.2.0"
 
+eslint-plugin-lit@^1.7.2:
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-lit/-/eslint-plugin-lit-1.7.2.tgz#97d76a30c1c38f273dd289e1cf066b0b1db32173"
+  integrity sha512-vkz9KvwVfHg7yDQCmokLGzUDypg683miswSw5xBiTszv4Qyus5/CgAK7U7dMgbVBa8G5wxHedY2zr9VCMNTaPQ==
+  dependencies:
+    parse5 "^6.0.1"
+    parse5-htmlparser2-tree-adapter "^6.0.1"
+    requireindex "^1.2.0"
+
 eslint-plugin-no-only-tests@^2.4.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-no-only-tests/-/eslint-plugin-no-only-tests-2.6.0.tgz#19f6c9620bda02b9b9221b436c5f070e42628d76"

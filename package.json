@@ -10,6 +10,7 @@
   "license": "MIT",
   "main": "share-to-mastodon.js",
   "module": "share-to-mastodon.js",
+  "type": "module",
   "files": [
     "share-to-mastodon.js",
     "share-to-mastodon.min.js",
@@ -44,6 +45,7 @@
     "es-dev-server": "^1.23.0",
     "eslint": "^6.1.0",
     "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-lit": "^1.7.2",
     "husky": "^1.0.0",
     "istanbul-badges-readme": "^1.4.0",
     "lint-staged": "^8.0.0",
@@ -59,6 +61,7 @@
   "eslintConfig": {
     "extends": [
       "@open-wc/eslint-config",
+      "plugin:lit/recommended",
       "eslint-config-prettier"
     ]
   },
