@@ -27,15 +27,15 @@
     "test": "wtr --coverage",
     "test:watch": "wtr --coverage --watch",
     "build": "rm -rf ./dist && yarn rollup -c && cp ./share-to-mastodon.js ./dist && yarn make-test-badges && cp ./package.json ./dist && cp ./README.md ./dist",
-    "make-test-badges": "yarn istanbul-badges-readme"
+    "make-test-badges": "yarn istanbul-badges-readme",
+    "prepare": "husky install"
   },
   "dependencies": {
     "lit": "^2.5.0"
   },
   "devDependencies": {
-    "@open-wc/eslint-config": "^2.0.0",
-    "@open-wc/testing": "^2.0.0",
-    "@open-wc/testing-karma": "^3.0.0",
+    "@open-wc/eslint-config": "^9.0.0",
+    "@open-wc/testing": "^3.0.0-next.5",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@web/dev-server": "^0.1.35",
     "@web/rollup-plugin-copy": "^0.3.0",
@@ -43,13 +43,13 @@
     "@web/test-runner": "^0.15.0",
     "deepmerge": "^3.2.0",
     "es-dev-server": "^1.23.0",
-    "eslint": "^6.1.0",
-    "eslint-config-prettier": "^6.11.0",
+    "eslint": "^8.0.0",
+    "eslint-config-prettier": "^8.0.0",
     "eslint-plugin-lit": "^1.7.2",
-    "husky": "^1.0.0",
+    "husky": "^8.0.0",
     "istanbul-badges-readme": "^1.4.0",
-    "lint-staged": "^8.0.0",
-    "prettier": "^2.0.4",
+    "lint-staged": "^13.0.0",
+    "prettier": "^2.0.0",
     "rollup": "^3.9.0",
     "rollup-plugin-filesize": "^9.0.2",
     "rollup-plugin-minify-html-literals": "^1.2.6",
@@ -63,16 +63,16 @@
       "@open-wc/eslint-config",
       "plugin:lit/recommended",
       "eslint-config-prettier"
-    ]
+    ],
+    "rules": {
+      "lit-a11y/no-autofocus": [
+        0
+      ]
+    }
   },
   "prettier": {
     "singleQuote": true,
     "arrowParens": "avoid"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "lint-staged": {
     "*.js": [
