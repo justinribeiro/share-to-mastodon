@@ -1,4 +1,4 @@
-[![npm version](https://badge.fury.io/js/%40justinribeiro%2Fshare-to-mastodon.svg)](https://badge.fury.io/js/%40justinribeiro%2Fshare-to-mastodon) [![min+gzip](https://badgen.net/bundlephobia/minzip/@justinribeiro/share-to-mastodon)](https://bundlephobia.com/result?p=@justinribeiro/share-to-mastodon@2.0.0)
+[![npm version](https://badge.fury.io/js/@justinribeiro%2Fshare-to-mastodon.svg)](https://badge.fury.io/js/@justinribeiro%2Fshare-to-mastodon) [![min+gzip](https://badgen.net/bundlephobia/minzip/@justinribeiro/share-to-mastodon)](https://bundlephobia.com/result?p=@justinribeiro/share-to-mastodon@2.0.0)
 
 ![Statements](https://img.shields.io/badge/statements-100%25-brightgreen.svg?style=flat) ![Branches](https://img.shields.io/badge/branches-100%25-brightgreen.svg?style=flat) ![Functions](https://img.shields.io/badge/functions-100%25-brightgreen.svg?style=flat) ![Lines](https://img.shields.io/badge/lines-100%25-brightgreen.svg?style=flat)
 
@@ -12,6 +12,7 @@
 2. Will remember the selected instance if selected by the user _per the installed domain_ (no cross-domain sharing)
 3. No User Tracking: it's all local, let's keep it real people
 4. Lots of custom css props, every string can be overridden
+5. _New in v2.0.0_: Bare metal speed, now with `<dialog>`!
 
 ## Install
 
