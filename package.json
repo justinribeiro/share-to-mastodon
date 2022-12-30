@@ -26,7 +26,8 @@
     "format": "npm run format:eslint && npm run format:prettier",
     "test": "wtr --coverage",
     "test:watch": "wtr --coverage --watch",
-    "build": "rm -rf ./dist && yarn rollup -c && cp ./share-to-mastodon.js ./dist && yarn make-test-badges && cp ./package.json ./dist && cp ./README.md ./dist",
+    "gen:ce:json": "wca analyze share-to-mastodon.js --outFile custom-elements.json",
+    "build": "rm -rf ./dist && yarn gen:ce:json && yarn rollup -c && cp ./share-to-mastodon.js ./dist && yarn make-test-badges && cp ./package.json ./dist && cp ./README.md ./dist && cp ./custom-elements.json ./dist",
     "make-test-badges": "yarn istanbul-badges-readme",
     "prepare": "husky install"
   },
@@ -56,7 +57,8 @@
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-summary": "^2.0.0",
     "rollup-plugin-terser": "^7.0.2",
-    "sinon": "^15.0.1"
+    "sinon": "^15.0.1",
+    "web-component-analyzer": "^2.0.0-next.4"
   },
   "eslintConfig": {
     "extends": [

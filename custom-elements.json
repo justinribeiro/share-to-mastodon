@@ -25,6 +25,12 @@
           "default": "\"\""
         },
         {
+          "name": "modalTitle",
+          "description": "The dialog modal title. Also used for screen readers.",
+          "type": "string",
+          "default": "\"Share to Mastodon\""
+        },
+        {
           "name": "modalMessage",
           "description": "The string that is displayed above the input field on the mini-modal",
           "type": "string",
@@ -32,9 +38,15 @@
         },
         {
           "name": "modalShareButton",
-          "description": "The string that is display on as the action button to share on the\nmini-modal",
+          "description": "The string that is displayed on the action button to share.",
           "type": "string",
           "default": "\"Share\""
+        },
+        {
+          "name": "modalShareCancel",
+          "description": "The string that is displayed on the action button to cancel the dialog.",
+          "type": "string",
+          "default": "\"Cancel\""
         },
         {
           "name": "modalSaveAsDefault",
@@ -72,6 +84,13 @@
           "default": "\"\""
         },
         {
+          "name": "modalTitle",
+          "attribute": "modalTitle",
+          "description": "The dialog modal title. Also used for screen readers.",
+          "type": "string",
+          "default": "\"Share to Mastodon\""
+        },
+        {
           "name": "modalMessage",
           "attribute": "modalMessage",
           "description": "The string that is displayed above the input field on the mini-modal",
@@ -81,9 +100,16 @@
         {
           "name": "modalShareButton",
           "attribute": "modalShareButton",
-          "description": "The string that is display on as the action button to share on the\nmini-modal",
+          "description": "The string that is displayed on the action button to share.",
           "type": "string",
           "default": "\"Share\""
+        },
+        {
+          "name": "modalShareCancel",
+          "attribute": "modalShareCancel",
+          "description": "The string that is displayed on the action button to cancel the dialog.",
+          "type": "string",
+          "default": "\"Cancel\""
         },
         {
           "name": "modalSaveAsDefault",
@@ -144,12 +170,22 @@
         },
         {
           "name": "--wc-stm-dialog-background-color",
-          "description": "the mini-dialogs background color",
+          "description": "the dialogs background color",
           "default": "\"white\""
         },
         {
+          "name": "--wc-stm-dialog-border-color",
+          "description": "the dialogs border color",
+          "default": "\"transparent\""
+        },
+        {
           "name": "--wc-stm-dialog-border-radius",
-          "description": "this mini-dialogs border radius",
+          "description": "this dialogs border radius",
+          "default": "\"0.5rem\""
+        },
+        {
+          "name": "--wc-stm-title-margin-top-bottom",
+          "description": "the mini-dialogs title margin for the H2",
           "default": "\"0.5rem\""
         },
         {
@@ -192,11 +228,19 @@
           "default": "\"inherit\""
         },
         {
-          "name": "--wc-stm-form-button-background-color-hover",
+          "name": "--wc-stm-form-submit-background-color",
           "default": "\"#ccc\""
         },
         {
-          "name": "--wc-stm-form-button-color-hover",
+          "name": "--wc-stm-form-cancel-background-color",
+          "default": "\"#eee\""
+        },
+        {
+          "name": "--wc-stm-form-submit-color",
+          "default": "\"inherit\""
+        },
+        {
+          "name": "--wc-stm-form-cancel-color",
           "default": "\"inherit\""
         }
       ]
