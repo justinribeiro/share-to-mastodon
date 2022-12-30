@@ -3,7 +3,8 @@
 ![Statements](https://img.shields.io/badge/statements-100%25-brightgreen.svg?style=flat) ![Branches](https://img.shields.io/badge/branches-100%25-brightgreen.svg?style=flat) ![Functions](https://img.shields.io/badge/functions-100%25-brightgreen.svg?style=flat) ![Lines](https://img.shields.io/badge/lines-100%25-brightgreen.svg?style=flat)
 
 # \<share-to-mastodon>
-> a small web component that uses a web platform `<dialog>` to allow setting of a target Mastodon instance from the user to allow sharing.
+
+> a small lit-based web component that uses `<dialog>` to allow setting of a target Mastodon instance from a user to allow sharing from your website.
 
 ## Features
 
