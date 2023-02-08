@@ -108,7 +108,7 @@ If you're looking for something more button-like, congrats, the slot let's you m
 | `modalMessage`       | `modalMessage`       | `string` | "Select or set which instance you'd like to share to." | The string that is displayed above the input field on the dialog |
 | `modalSaveAsDefault` | `modalSaveAsDefault` | `string` | "Remember My Instance (locally only)"            | The string that is used as the label for the checkbox default save option |
 | `modalShareButton`   | `modalShareButton`   | `string` | "Share"                                          | The string that is displayed on the action button to submit the form in the dialog |
-| `modalCancelButton`   | `modalCancelButton`   | `string` | "Cancel"                                          | The string that is displayed on the cancel button to close the dialog |
+| `modalShareCancel`   | `modalShareCancel`   | `string` | "Cancel"                                          | The string that is displayed on the cancel button to close the dialog |
 | `targetInstance`     | `targetInstance`     | `string` | ""                                               | The target Mastodon instance, usually set by the user within the dialog that display on first share |
 | `url`                | `url`                | `string` | "href"                                           | The url of the thing you are sharing within the target Mastodon input that opens on the share page. |
 
