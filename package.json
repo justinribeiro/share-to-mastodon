@@ -14,7 +14,8 @@
   "files": [
     "share-to-mastodon.js",
     "share-to-mastodon.min.js",
-    "share-to-mastodon.min.js.map"
+    "share-to-mastodon.min.js.map",
+    "custom-elements.json"
   ],
   "scripts": {
     "start": "wds --app-index demo/index.html --node-resolve --open --watch",
@@ -32,7 +33,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "lit": "^2.5.0"
+    "lit": "^3.0.0"
   },
   "devDependencies": {
     "@open-wc/eslint-config": "^9.0.0",
@@ -51,7 +52,7 @@
     "istanbul-badges-readme": "^1.4.0",
     "lint-staged": "^13.0.0",
     "prettier": "^2.0.0",
-    "rollup": "^3.9.0",
+    "rollup": "^4.0.0",
     "rollup-plugin-filesize": "^9.0.2",
     "rollup-plugin-minify-html-literals": "^1.2.6",
     "rollup-plugin-node-resolve": "^5.2.0",
