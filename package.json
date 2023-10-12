@@ -1,6 +1,6 @@
 {
   "name": "@justinribeiro/share-to-mastodon",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "A small lit-based web component that uses a <dialog> to allow setting of a target Mastodon instance from a user to allow sharing from your website.",
   "author": "Justin Ribeiro <justin@justinribeiro.com>",
   "repository": {
